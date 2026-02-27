@@ -87,7 +87,7 @@ export default function AiPanel({ text, loading, regen }) {
 
         ) : (
           <div className="p-8 text-center text-sm text-[#999]">
-            AI ideas will appear here.
+            Start Typing...AI ideas will appear here.
           </div>
         )}
 
