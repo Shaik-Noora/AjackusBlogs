@@ -1,19 +1,25 @@
 require("dotenv").config();
-const express=require("express");
-const cors=require("cors");
+const express = require("express");
+const cors = require("cors");
 
 require("./db/database");
 
-const blogRoutes=require("./routes/blogRoutes");
-const aiRoutes=require("./routes/aiRoutes");
+const blogRoutes = require("./routes/blogRoutes");
+const aiRoutes = require("./routes/aiRoutes");
 
-const app=express();
+const app = express();
 
+/* ---------- MIDDLEWARE ---------- */
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/blogs",blogRoutes);
-app.use("/api/ai-suggestions",aiRoutes);
+/* ---------- ROUTES ---------- */
+app.use("/api/blogs", blogRoutes);
+app.use("/api/ai-suggestions", aiRoutes);
 
-app.listen(process.env.PORT,
-()=>console.log("Server running"));
+/* ---------- SERVER ---------- */
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
+});
